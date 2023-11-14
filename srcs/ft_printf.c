@@ -1,17 +1,18 @@
 #include "../ft_printf.h"
 
-static int	ft_print_conversion(const char *format, va_list ap)
+static int	ft_print_conversion(char specifier, va_list ap)
 {
-	int	count;
-
-	count = 0;
-	if (*format == 'c')
-		count += ft_print_character(va_arg(ap, int));
-	else if (*format == 's')
-		count += ft_print_str(va_arg(ap, char *));
-	else if (*format == 'd' || *format == 'i')
-		count += ft_print_int(va_arg(ap, long long));
-	return (count);
+	if (specifier == '%')
+	  return (ft_print_character('%'));
+	if (specifier == 'c')
+		return (ft_print_character(va_arg(ap, int)));
+	if (specifier == 's')
+		return (ft_print_str(va_arg(ap, char *)));
+	if (specifier == 'd' || specifier == 'i')
+		return (ft_print_int(va_arg(ap, int)));
+	if (specifier == 'u')
+		return (ft_print_uint(va_arg(ap, unsigned int)));
+	return (0);
 }
 
 int	ft_printf(const char *format, ...)
@@ -25,7 +26,7 @@ int	ft_printf(const char *format, ...)
 	{
 		if (*format == '%' && *(format + 1))
 		{
-			count += ft_print_conversion(++format, ap);
+			count += ft_print_conversion(*++format, ap);
 			++format;
 		}
 		else

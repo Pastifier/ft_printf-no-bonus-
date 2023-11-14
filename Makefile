@@ -1,7 +1,7 @@
 NAME := libftprintf.a
 
 CC := cc
-CFLAGS := -Wall -Wextra -Werror
+CFLAGS := -Wall -Wextra -Werror -Wpedantic
 AR := ar
 ARFLAGS := -rcs
 RM := rm -rf
@@ -9,7 +9,7 @@ RM := rm -rf
 INCLUDE = ft_printf.h
 
 SRC_DIR := srcs
-SRC = ft_printf ft_character
+SRC = ft_printf ft_character ft_integer
 
 SRCS = $(addprefix $(SRC_DIR)/, $(addsuffix .c, $(SRC)))
 
@@ -26,7 +26,7 @@ all: $(LIBFT) $(NAME)
 bonus: all
 
 $(LIBFT):
-	make -C $(LIBFT_PATH) all
+	make -C $(LIBFT_PATH) bonus
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)

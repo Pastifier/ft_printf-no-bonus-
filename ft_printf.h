@@ -21,7 +21,7 @@ int	ft_print_character(int c);
 
 /*------Integers------*/
 
-int	ft_print_int(char *nbstr);
-
+int	ft_print_int(int nbr);
+int	ft_print_uint(unsigned int nbr);
 /*-----Hexadecimal-----*/
 #endif // !FT_PRINTF_H

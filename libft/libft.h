@@ -388,7 +388,7 @@ typedef struct s_list
 
  * (Performing operations on an invalid list is undefined behaviour).
  */
-t_list	*ft_lstnode(void *content);
+t_list	*ft_lstnew(void *content);
 
 /*
  * Takes a pointer to a list, and sets `node` as the head of that list.
