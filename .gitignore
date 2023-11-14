@@ -35,13 +35,14 @@
 *.i*86
 *.x86_64
 *.hex
+test
 
 # Debug files
 *.dSYM/
 *.su
 *.idb
 *.pdb
-
+test.c
 # Kernel Module Compile Results
 *.mod*
 *.cmd
