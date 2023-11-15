@@ -40,7 +40,7 @@ int	ft_print_int(int nbr, int *errno)
 	nbstr = ft_itoa(nbr);
 	if (!nbstr)
 	{
-		*errno = fetch;
+		*errno = -1;
 		return (0);
 	}
 	fetch = write(1, nbstr, ft_strlen(nbstr));
