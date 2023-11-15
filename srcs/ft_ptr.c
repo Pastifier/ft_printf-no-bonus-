@@ -48,5 +48,6 @@ int	ft_print_ptr(unsigned long long x)
 		return (0);
 	count = write(1, "0x", 2);
 	count += write(1, xstr, ft_strlen(xstr));
+	free(xstr);
 	return (count);
 }

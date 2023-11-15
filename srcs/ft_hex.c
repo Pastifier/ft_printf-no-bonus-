@@ -56,6 +56,7 @@ static char	*ft_xtoa(unsigned long x, bool is_lower)
 int	ft_print_hex(unsigned long x, bool is_lower)
 {
 	char	*xstr;
+	int		count;
 
 	if (is_lower)
 		xstr = ft_xtoa(x, 1);
@@ -63,5 +64,7 @@ int	ft_print_hex(unsigned long x, bool is_lower)
 	 	xstr = ft_xtoa(x, 0);
 	if (!xstr)
 		return (0);
-	return (write(1, xstr, ft_strlen(xstr)));
+	count = write(1, xstr, ft_strlen(xstr));
+	free(xstr);
+	return (count);
 }
