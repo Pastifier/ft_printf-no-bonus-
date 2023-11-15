@@ -30,18 +30,18 @@ int	ft_printf(const char *format, ...)
 	count = 0;
 	err = 0;
 	va_start(ap, format);
-	while (*format && !err)
+	while (*format)
 	{
 		if (*format == '%' && *(format + 1))
 		{
 			count += ft_print_conversion(*++format, ap, &err);
+			if (err < 0)
+				return (err);
 			++format;
 		}
 		else
-			count += write(1, format++, 1);
+		count += write(1, format++, 1);
 	}
 	va_end(ap);
-	if (err)
-		return (err);
 	return (count);
 }

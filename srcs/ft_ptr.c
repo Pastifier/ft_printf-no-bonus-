@@ -52,13 +52,13 @@ int	ft_print_ptr(unsigned long long x, int *errno)
 	fetch = write(1, "0x", 2);
 	if (fetch < 0)
 	{
-		*errno = -1;
+		*errno = fetch;
 		return (0);
 	}
 	fetch += write(1, xstr, ft_strlen(xstr));
 	if (fetch < 0)
 	{
-		*errno = -1;
+		*errno = fetch;
 		return (0);
 	}
 	free(xstr);

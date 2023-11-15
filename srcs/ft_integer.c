@@ -40,14 +40,14 @@ int	ft_print_int(int nbr, int *errno)
 	nbstr = ft_itoa(nbr);
 	if (!nbstr)
 	{
-		*errno = -1;
+		*errno = fetch;
 		return (0);
 	}
 	fetch = write(1, nbstr, ft_strlen(nbstr));
 	free(nbstr);
 	if (fetch < 0)
 	{
-		*errno = -1;
+		*errno = fetch;
 		return (0);
 	}
 	return (fetch);
@@ -68,7 +68,7 @@ int	ft_print_uint(unsigned int nbr, int *errno)
 	free(nbstr);
 	if (fetch < 0)
 	{
-		*errno = -1;
+		*errno = fetch;
 		return (0);
 	}
 	return (fetch);
