@@ -1,7 +1,7 @@
 #include "../ft_printf.h"
 #include <stddef.h>
 
-static size_t	ft_xlen(unsigned long x)
+static size_t	ft_xlen(unsigned int x)
 {
 	int	count;
 
@@ -16,7 +16,7 @@ static size_t	ft_xlen(unsigned long x)
 	return (count);
 }
 
-static char	*ft_xtostr(unsigned long x)
+static char	*ft_xtostr(unsigned int x)
 {
 	char	*self;
 	size_t	xlen;
@@ -38,7 +38,7 @@ static char	*ft_xtostr(unsigned long x)
 	return (self);
 }
 
-static char	*ft_xtoa(unsigned long x, bool is_lower)
+static char	*ft_xtoa(unsigned int x, bool is_lower)
 {
 	char	*self;
 
@@ -53,7 +53,7 @@ static char	*ft_xtoa(unsigned long x, bool is_lower)
 	return (self);
 }
 
-int	ft_print_hex(unsigned long x, bool is_lower)
+int	ft_print_hex(unsigned int x, bool is_lower)
 {
 	char	*xstr;
 	int		count;

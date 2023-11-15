@@ -28,5 +28,5 @@ int	ft_print_uint(unsigned int nbr);
 
 /*-----Hexadecimal-----*/
 
-int	ft_print_hex(unsigned long x, bool is_lower);
+int	ft_print_hex(unsigned int x, bool is_lower);
 #endif // !FT_PRINTF_H
