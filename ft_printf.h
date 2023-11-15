@@ -19,9 +19,14 @@ int	ft_print_character(int c);
 
 /*-------Address-------*/
 
+int	ft_print_ptr(unsigned long long x);
+
 /*------Integers------*/
 
 int	ft_print_int(int nbr);
 int	ft_print_uint(unsigned int nbr);
+
 /*-----Hexadecimal-----*/
+
+int	ft_print_hex(unsigned long x, bool is_lower);
 #endif // !FT_PRINTF_H

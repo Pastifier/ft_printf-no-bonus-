@@ -13,7 +13,7 @@ static size_t	digitnum(unsigned int nbr)
 		nbr /= 10;
 	}
 	return (count);
-} /*-------CHECK--------*/
+}
 
 static char	*ft_utoa(unsigned int nbr)
 {
@@ -24,12 +24,11 @@ static char	*ft_utoa(unsigned int nbr)
 	self = ft_calloc(digits + 1, sizeof(char));
 	if (!self)
 		return (NULL);
-	while (--digits)
+	while (--digits != (size_t)-1)
 	{
 		self[digits] = '0' + (nbr % 10);
 		nbr /= 10;
 	}
-	self[digits] = '0' + (nbr % 10);
 	return (self);
 }
 

@@ -9,7 +9,7 @@ RM := rm -rf
 INCLUDE = ft_printf.h
 
 SRC_DIR := srcs
-SRC = ft_printf ft_character ft_integer
+SRC = ft_printf ft_character ft_integer ft_hex ft_ptr
 
 SRCS = $(addprefix $(SRC_DIR)/, $(addsuffix .c, $(SRC)))
 

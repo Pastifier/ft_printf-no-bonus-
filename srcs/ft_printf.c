@@ -12,6 +12,12 @@ static int	ft_print_conversion(char specifier, va_list ap)
 		return (ft_print_int(va_arg(ap, int)));
 	if (specifier == 'u')
 		return (ft_print_uint(va_arg(ap, unsigned int)));
+	if (specifier == 'x')
+		return (ft_print_hex(va_arg(ap, unsigned long), 1));
+	if (specifier == 'X')
+		return (ft_print_hex(va_arg(ap, unsigned long), 0));
+	if (specifier == 'p')
+		return (ft_print_ptr(va_arg(ap, unsigned long long)));
 	return (0);
 }
 
