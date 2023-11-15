@@ -3,17 +3,17 @@
 
 static size_t	ft_xlen(unsigned long long x)
 {
-	int	count;
+	int	fetch;
 
-	count = 0;
+	fetch = 0;
 	if (!x)
 		return (1);
 	while (x)
 	{
-		++count;
+		++fetch;
 		x /= 16;
 	}
-	return (count);
+	return (fetch);
 }
 
 static char	*ft_xtostr(unsigned long long x)
@@ -38,16 +38,29 @@ static char	*ft_xtostr(unsigned long long x)
 	return (self);
 }
 
-int	ft_print_ptr(unsigned long long x)
+int	ft_print_ptr(unsigned long long x, int *errno)
 {
 	char	*xstr;
-	int		count;
+	int		fetch;
 
 	xstr = ft_xtostr(x);
 	if (!xstr)
+	{
+		*errno = -1;
 		return (0);
-	count = write(1, "0x", 2);
-	count += write(1, xstr, ft_strlen(xstr));
+	}
+	fetch = write(1, "0x", 2);
+	if (fetch < 0)
+	{
+		*errno = fetch;
+		return (0);
+	}
+	fetch += write(1, xstr, ft_strlen(xstr));
+	if (fetch < 0)
+	{
+		*errno = fetch;
+		return (0);
+	}
 	free(xstr);
-	return (count);
+	return (fetch);
 }

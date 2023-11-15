@@ -32,28 +32,44 @@ static char	*ft_utoa(unsigned int nbr)
 	return (self);
 }
 
-int	ft_print_int(int nbr)
+int	ft_print_int(int nbr, int *errno)
 {
 	char	*nbstr;
-	int		count;
+	int		fetch;
 
 	nbstr = ft_itoa(nbr);
 	if (!nbstr)
+	{
+		*errno = -1;
 		return (0);
-	count = write(1, nbstr, ft_strlen(nbstr));
+	}
+	fetch = write(1, nbstr, ft_strlen(nbstr));
 	free(nbstr);
-	return (count);
+	if (fetch < 0)
+	{
+		*errno = fetch;
+		return (0);
+	}
+	return (fetch);
 }
 
-int	ft_print_uint(unsigned int nbr)
+int	ft_print_uint(unsigned int nbr, int *errno)
 {
 	char	*nbstr;
-	int		count;
+	int		fetch;
 
 	nbstr = ft_utoa(nbr);
 	if (!nbstr)
+	{
+		*errno = -1;
 		return (0);
-	count = write(1, nbstr, ft_strlen(nbstr));
+	}
+	fetch = write(1, nbstr, ft_strlen(nbstr));
 	free(nbstr);
-	return (count);
+	if (fetch < 0)
+	{
+		*errno = fetch;
+		return (0);
+	}
+	return (fetch);
 }

@@ -1,23 +1,23 @@
 #include "../ft_printf.h"
 
-static int	ft_print_conversion(char specifier, va_list ap)
+static int	ft_print_conversion(char specifier, va_list ap, int *errno)
 {
 	if (specifier == '%')
-	  return (ft_print_character('%'));
+	  return (ft_print_character('%', errno));
 	if (specifier == 'c')
-		return (ft_print_character(va_arg(ap, int)));
+		return (ft_print_character(va_arg(ap, int), errno));
 	if (specifier == 's')
-		return (ft_print_str(va_arg(ap, char *)));
+		return (ft_print_str(va_arg(ap, char *), errno));
 	if (specifier == 'd' || specifier == 'i')
-		return (ft_print_int(va_arg(ap, int)));
+		return (ft_print_int(va_arg(ap, int), errno));
 	if (specifier == 'u')
-		return (ft_print_uint(va_arg(ap, unsigned int)));
+		return (ft_print_uint(va_arg(ap, unsigned int), errno));
 	if (specifier == 'x')
-		return (ft_print_hex(va_arg(ap, unsigned long), 1));
+		return (ft_print_hex(va_arg(ap, unsigned long), 1, errno));
 	if (specifier == 'X')
-		return (ft_print_hex(va_arg(ap, unsigned long), 0));
+		return (ft_print_hex(va_arg(ap, unsigned long), 0, errno));
 	if (specifier == 'p')
-		return (ft_print_ptr(va_arg(ap, unsigned long long)));
+		return (ft_print_ptr(va_arg(ap, unsigned long long), errno));
 	return (0);
 }
 
@@ -25,19 +25,23 @@ int	ft_printf(const char *format, ...)
 {
 	int		count;
 	va_list	ap;
+	int		err;
 
 	count = 0;
+	err = 0;
 	va_start(ap, format);
-	while (*format)
+	while (*format && !err)
 	{
 		if (*format == '%' && *(format + 1))
 		{
-			count += ft_print_conversion(*++format, ap);
+			count += ft_print_conversion(*++format, ap, &err);
 			++format;
 		}
 		else
 			count += write(1, format++, 1);
 	}
 	va_end(ap);
+	if (err)
+		return (err);
 	return (count);
 }

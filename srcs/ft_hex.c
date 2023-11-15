@@ -41,30 +41,40 @@ static char	*ft_xtostr(unsigned int x)
 static char	*ft_xtoa(unsigned int x, bool is_lower)
 {
 	char	*self;
+	char	*dummy;
 
-	(void)is_lower; // for now
 	self = ft_xtostr(x);
+	dummy = self;
 	if (!self)
 		return (NULL);
-	if (is_lower)
-		return (self);
-	while (*self++)
-		*self = ft_toupper(*self);
+	if (!is_lower)
+	{
+		while (*dummy)
+		{
+			*dummy = ft_toupper(*dummy);
+			++dummy;
+		}
+	}
 	return (self);
 }
 
-int	ft_print_hex(unsigned int x, bool is_lower)
+int	ft_print_hex(unsigned int x, bool is_lower, int *errno)
 {
 	char	*xstr;
-	int		count;
+	int		fetch;
 
-	if (is_lower)
-		xstr = ft_xtoa(x, 1);
-	else
-	 	xstr = ft_xtoa(x, 0);
+	xstr = ft_xtoa(x, is_lower);
 	if (!xstr)
+	{
+		*errno = -1;
 		return (0);
-	count = write(1, xstr, ft_strlen(xstr));
+	}
+	fetch = write(1, xstr, ft_strlen(xstr));
 	free(xstr);
-	return (count);
+	if (fetch < 0)
+	{
+		*errno = fetch;
+		return (0);
+	}
+	return (fetch);
 }
