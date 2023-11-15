@@ -47,7 +47,7 @@ int	ft_print_int(int nbr, int *errno)
 	free(nbstr);
 	if (fetch < 0)
 	{
-		*errno = fetch;
+		*errno = -1;
 		return (0);
 	}
 	return (fetch);
@@ -68,7 +68,7 @@ int	ft_print_uint(unsigned int nbr, int *errno)
 	free(nbstr);
 	if (fetch < 0)
 	{
-		*errno = fetch;
+		*errno = -1;
 		return (0);
 	}
 	return (fetch);

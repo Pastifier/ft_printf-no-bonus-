@@ -7,7 +7,7 @@ int	ft_print_character(int c, int *errno)
 	fetch = write(1, &c, 1);
 	if (fetch < 0)
 	{
-		*errno = fetch;
+		*errno = -1;
 		return (0);
 	}
 	return (fetch);
@@ -22,7 +22,7 @@ int	ft_print_str(char *str, int *errno)
 		fetch = write(1, ("(null)"), 6);
 		if (fetch < 0)
 		{
-			*errno = fetch;
+			*errno = -1;
 			return (0);
 		}
 		return (fetch);

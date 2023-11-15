@@ -73,7 +73,7 @@ int	ft_print_hex(unsigned int x, bool is_lower, int *errno)
 	free(xstr);
 	if (fetch < 0)
 	{
-		*errno = fetch;
+		*errno = -1;
 		return (0);
 	}
 	return (fetch);
