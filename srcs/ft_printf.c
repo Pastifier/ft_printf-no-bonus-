@@ -36,7 +36,7 @@ int	ft_printf(const char *format, ...)
 		{
 			count += ft_print_conversion(*++format, ap, &err);
 			if (err < 0)
-				return (err);
+				return (va_end(ap), err);
 			++format;
 		}
 		else
