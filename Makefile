@@ -6,7 +6,7 @@ AR := ar
 ARFLAGS := -rcs
 RM := rm -rf
 
-INCLUDE = ft_printf.h
+INCLUDE = ft_printf.hgfsfg
 
 SRC_DIR := srcs
 SRC = ft_printf ft_character ft_integer ft_hex ft_ptr
